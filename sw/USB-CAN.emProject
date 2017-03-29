@@ -1,0 +1,98 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="USB-CAN" target="8" version="2">
+  <project Name="USB-CAN">
+    <configuration
+      Name="Common"
+      Placement="Flash"
+      Target="STM32F072C8"
+      arm_architecture="v6M"
+      arm_core_type="Cortex-M0"
+      arm_endian="Little"
+      arm_fpu_type="None"
+      arm_interwork="No"
+      arm_linker_heap_size="0"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="512"
+      arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00010000;RAM;0x20000000;0x00004000"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_device_name="STM32F072C8"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="STM32F072;__STM32F0xx_FAMILY;__STM32F072_SUBFAMILY;ARM_MATH_CM0;FLASH_PLACEMENT=1"
+      c_system_include_directories="$(StudioDir)/include;$(PackagesDir)/include;$(StudioDir)/source/libxceptrtti/gcc-4.x.x/libstdc++-v3/libsupc++;$(StudioDir)/source/libxceptrtti/gcc-4.x.x/libstdc++-v3/include"
+      c_user_include_directories="$(ProjectDir)/CMSIS_4/CMSIS/Include;$(ProjectDir)/STM32F0xx/CMSIS/Device/Include;$(ProjectDir)/src;$(ProjectDir)/STM32_USB_Device_Library/Core/inc;$(ProjectDir)/STM32_USB_Device_Library/Class/cdc/inc;$(ProjectDir)/STM32_USB_Device_Driver/inc;$(StudioDir)source/libxceptrtti/gcc-4.x.x/libstdc++-v3/include"
+      debug_register_definition_file="$(ProjectDir)/STM32F072x_Registers.xml"
+      gcc_cplusplus_language_standard="gnu++14"
+      gcc_enable_all_warnings="Yes"
+      gcc_entry_point="Reset_Handler"
+      gcc_wchar_size="16-Bit"
+      linker_memory_map_file="$(ProjectDir)/STM32F072C8_MemoryMap.xml"
+      linker_output_format="hex"
+      linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
+      macros="DeviceHeaderFile=$(PackagesDir)/STM32F0xx/CMSIS/Device/Include/stm32f0xx.h;DeviceLibraryIdentifier=M0l;DeviceSystemFile=$(PackagesDir)/STM32F0xx/CMSIS/Device/Source/system_stm32f0xx.c;DeviceVectorsFile=$(PackagesDir)/STM32F0xx/Source/STM32F072x_Vectors.s;DeviceFamily=STM32F0xx;DeviceSubFamily=STM32F072;Target=STM32F072C8;Placement=Flash"
+      package_dependencies="STM32F0xx"
+      project_can_build_in_parallel="Yes"
+      project_directory=""
+      project_inhibit_indexing="No"
+      project_type="Executable"
+      target_reset_script="Reset();"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <folder Name="CMSIS Files">
+      <file file_name="system_stm32f0xx.c">
+        <configuration
+          Name="Common"
+          default_code_section=".init"
+          default_const_section=".init_rodata" />
+      </file>
+      <file file_name="STM32F0xx/CMSIS/Device/Include/stm32f0xx.h" />
+    </folder>
+    <folder Name="Script Files">
+      <file file_name="STM32F0xx_Target.js">
+        <configuration Name="Common" file_type="Reset Script" />
+      </file>
+    </folder>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="src/main.cpp" />
+      <file file_name="src/can.cpp" />
+      <folder Name="USB">
+        <file file_name="STM32_USB_Device_Driver/src/usb_dcd_int.c" />
+        <file file_name="STM32_USB_Device_Driver/src/usb_core.c" />
+        <file file_name="STM32_USB_Device_Driver/src/usb_dcd.c" />
+        <file file_name="STM32_USB_Device_Library/Class/cdc/src/usbd_cdc_core.c" />
+        <file file_name="STM32_USB_Device_Library/Core/src/usbd_req.c" />
+        <file file_name="STM32_USB_Device_Library/Core/src/usbd_core.c" />
+        <file file_name="STM32_USB_Device_Library/Core/src/usbd_ioreq.c" />
+        <file file_name="src/usb_bsp.c" />
+        <file file_name="src/usbd_cdc_vcp.c" />
+        <file file_name="src/usbd_desc.c" />
+        <file file_name="src/usbd_pwr.c" />
+        <file file_name="src/usbd_usr.c" />
+      </folder>
+      <file file_name="src/gpio.cpp">
+        <configuration Name="Common" file_type="C++" />
+      </file>
+      <file file_name="src/Timer.cpp" />
+      <file file_name="src/timer_led.cpp" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="thumb_crt0.s" />
+      <file file_name="STM32F0xx_Startup.s" />
+      <file file_name="STM32F072x_Vectors.s">
+        <configuration Name="Common" file_type="Assembly" />
+      </file>
+    </folder>
+    <configuration Name="Debug" debug_target_connection="J-Link" />
+    <configuration Name="Release" debug_target_connection="J-Link" />
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1" />
+</solution>
