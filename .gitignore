@@ -46,5 +46,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-sw/Output
-!sw/Output/Release/Exe
+/sw/Output/Debug/
+*.[od]
+*.ld
