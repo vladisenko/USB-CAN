@@ -26,6 +26,7 @@ enum {
   CloseCAN        = 'C',
   SetTimestamping = 'Z',
   SetBitrate      = 'S',
+  SetBitrateCustom= 's',
   SetFilterMask   = 'm',
   SetFilterCode   = 'M',
   SendStd         = 't',
