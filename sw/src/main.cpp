@@ -111,6 +111,22 @@ inline uint32_t get_word (void)
 }
 
 
+inline uint32_t GetBitrateCustom (void)
+{
+  uint8_t tmp;
+  uint8_t i = 4;
+  uint32_t btr = 0;
+
+  do
+  {
+    while (false == rxfifo.pop(tmp)){};
+    btr = (btr << 4) | char_to_hex(tmp);
+  } while ( tmp != '\r' && --i);
+  btr = (btr & 0x01FF) | ((btr & 0xFE00) << 7);
+  return  btr;
+}
+
+
 CANbus::Status SebdCANMsg (uint8_t type)
 {
   CANbus::TxMsg msg;
@@ -240,6 +256,9 @@ int main(void)
         case SetBitrate:
           while (false == rxfifo.pop(tmp)){};
           st = CANbus::bitrate(GetBitrate(tmp));
+          break;
+        case SetBitrateCustom:
+          st = CANbus::bitrate(GetBitrateCustom());
           break;
         case SendStd: case SendStdRTR:
           st = SebdCANMsg(tmp);
