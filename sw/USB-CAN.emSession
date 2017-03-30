@@ -24,6 +24,7 @@
   <ProjectSessionItem path="USB-CAN;USB-CAN;CMSIS Files"/>
   <ProjectSessionItem path="USB-CAN;USB-CAN;Source Files"/>
   <ProjectSessionItem path="USB-CAN;USB-CAN;System Files"/>
+  <SourceCodeControlLogin password="68D7C45E04C1CD79" user="vladisenko"/>
  </Project>
  <Register1>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp;CAN/CAN_MCR;CAN/CAN_MSR;CAN/CAN_TSR;CAN/CAN_RF0R;CAN/CAN_RF1R;CAN/CAN_IER;CAN/CAN_ESR;CAN/CAN_BTR;CAN/CAN_TI0R;CAN/CAN_TDT0R;CAN/CAN_TDL0R;CAN/CAN_TDH0R;CAN/CAN_TI1R;CAN/CAN_TDT1R;CAN/CAN_TDL1R;CAN/CAN_TDH1R;CAN/CAN_TI2R;CAN/CAN_TDT2R;CAN/CAN_TDL2R;CAN/CAN_TDH2R;CAN/CAN_RI0R;CAN/CAN_RDT0R;CAN/CAN_RDL0R;CAN/CAN_RDH0R;CAN/CAN_RI1R;CAN/CAN_RDT1R;CAN/CAN_RDL1R;CAN/CAN_RDH1R;CAN/CAN_FMR;CAN/CAN_FM1R;CAN/CAN_FS1R;CAN/CAN_FFA1R;CAN/CAN_FA1R;CAN/F0R1;CAN/F0R2;CAN/F1R1;CAN/F1R2;CAN/F2R1;CAN/F2R2;CAN/F3R1;CAN/F3R2;CAN/F4R1;CAN/F4R2;CAN/F5R1;CAN/F5R2;CAN/F6R1;CAN/F6R2;CAN/F7R1;CAN/F7R2;CAN/F8R1;CAN/F8R2;CAN/F9R1;CAN/F9R2;CAN/F10R1;CAN/F10R2;CAN/F11R1;CAN/F11R2;CAN/F12R1;CAN/F12R2;CAN/F13R1;CAN/F13R2;CAN/F14R1;CAN/F14R2;CAN/F15R1;CAN/F15R2;CAN/F16R1;CAN/F16R2;CAN/F17R1;CAN/F17R2;CAN/F18R1;CAN/F18R2;CAN/F19R1;CAN/F19R2;CAN/F20R1;CAN/F20R2;CAN/F21R1;CAN/F21R2;CAN/F22R1;CAN/F22R2;CAN/F23R1;CAN/F23R2;CAN/F24R1;CAN/F24R2;CAN/F25R1;CAN/F25R2;CAN/F26R1;CAN/F26R2;CAN/F27R1;CAN/F27R2" binaryNodes="" asciiNodes="" openNodes="CAN" name="USB-CAN" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -44,7 +45,7 @@
  <Watch1>
   <Watches active="1" update="Twice a Second">
    <Watchpoint numelements="0" expression="rxfifo" evalMode="0" name="rxfifo" radix="16" linenumber="0" filename="../USB-CAN" list=""/>
-   <Watchpoint numelements="0" expression="txfifo" evalMode="0" name="txfifo" radix="-1" linenumber="0" filename="" list=""/>
+   <Watchpoint numelements="0" expression="txfifo" evalMode="0" name="txfifo" radix="-1" linenumber="0" filename="../sw" list=""/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -57,13 +58,13 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile x="0" y="43" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.cpp" debugPath="src/can.cpp" selected="1" top="19" codecName="Default"/>
+  <SessionOpenFile x="0" y="32" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.cpp" debugPath="src/can.cpp" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.hpp" debugPath="src/can.hpp" selected="0" top="53" codecName="Default"/>
-  <SessionOpenFile x="0" y="268" useTextEdit="1" useBinaryEdit="0" left="0" path="src/main.cpp" debugPath="src/main.cpp" selected="0" top="168" codecName="Default"/>
+  <SessionOpenFile x="0" y="281" useTextEdit="1" useBinaryEdit="0" left="0" path="src/main.cpp" debugPath="src/main.cpp" selected="1" top="242" codecName="Default"/>
   <SessionOpenFile x="0" y="42" useTextEdit="1" useBinaryEdit="0" left="0" path="src/gpio.cpp" debugPath="src/gpio.cpp" selected="0" top="6" codecName="Default"/>
-  <SessionOpenFile x="29" y="41" useTextEdit="1" useBinaryEdit="0" left="0" path="src/gpio.hpp" debugPath="src/gpio.hpp" selected="0" top="27" codecName="Default"/>
-  <SessionOpenFile x="5" y="32" useTextEdit="1" useBinaryEdit="0" left="0" path="src/fifo.hpp" debugPath="src/fifo.hpp" selected="0" top="0" codecName=""/>
+  <SessionOpenFile x="0" y="41" useTextEdit="1" useBinaryEdit="0" left="0" path="src/gpio.hpp" debugPath="src/gpio.hpp" selected="0" top="27" codecName="Default"/>
+  <SessionOpenFile x="0" y="32" useTextEdit="1" useBinaryEdit="0" left="0" path="src/fifo.hpp" debugPath="src/fifo.hpp" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile x="0" y="1306" useTextEdit="1" useBinaryEdit="0" left="0" path="STM32F0xx/CMSIS/Device/Include/stm32f0xx.h" debugPath="STM32F0xx/CMSIS/Device/Include/stm32f0xx.h" selected="0" top="1282" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="USB-CAN" fileDialogDefaultFilter="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.hxx" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="D:/SW/SEGGER-Embedded-Studio-Projects/USB-CAN/src" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="USB-CAN" fileDialogDefaultFilter="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.hxx" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="D:/SW/SEGGER-Embedded-Studio-Projects/USB-CAN/src" debugSearchPath="" autoConnectCapabilities="1132"/>
 </session>

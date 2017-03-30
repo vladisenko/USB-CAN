@@ -2053,7 +2053,7 @@ Linker script and memory map
                 0x00000001                . = ASSERT (((__init_rodata_start__ == __init_rodata_end__) || ((__init_rodata_end__ >= __FLASH_segment_start__) && (__init_rodata_end__ <= __FLASH_segment_end__))), error: .init_rodata is too large to fit in FLASH memory segment)
                 0x080003ac                __text_load_start__ = ALIGN (__init_rodata_end__, 0x4)
 
-.text           0x080003ac     0x2a48
+.text           0x080003ac     0x2ac0
                 0x080003ac                __text_start__ = .
  *(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table .ARM.extab* .gnu.linkonce.armextab.*)
  .glue_7        0x080003ac        0x0 linker stubs
@@ -2067,372 +2067,372 @@ Linker script and memory map
  .text._Z10SebdCANMsgh
                 0x08000630      0x164 Output/USB-CAN Release/Obj/main.o
                 0x08000630                SebdCANMsg(unsigned char)
- .text.main     0x08000794      0x310 Output/USB-CAN Release/Obj/main.o
+ .text.main     0x08000794      0x388 Output/USB-CAN Release/Obj/main.o
                 0x08000794                main
  .text._GLOBAL__sub_I_USB_Device_dev
-                0x08000aa4       0x24 Output/USB-CAN Release/Obj/main.o
+                0x08000b1c       0x24 Output/USB-CAN Release/Obj/main.o
  .text._ZN6CANbus4initEv
-                0x08000ac8       0x94 Output/USB-CAN Release/Obj/can.o
-                0x08000ac8                CANbus::init()
+                0x08000b40       0x94 Output/USB-CAN Release/Obj/can.o
+                0x08000b40                CANbus::init()
  .text._ZN6CANbus10filtermaskEj
-                0x08000b5c       0x28 Output/USB-CAN Release/Obj/can.o
-                0x08000b5c                CANbus::filtermask(unsigned int)
+                0x08000bd4       0x28 Output/USB-CAN Release/Obj/can.o
+                0x08000bd4                CANbus::filtermask(unsigned int)
  .text._ZN6CANbus10filtercodeEj
-                0x08000b84       0x24 Output/USB-CAN Release/Obj/can.o
-                0x08000b84                CANbus::filtercode(unsigned int)
+                0x08000bfc       0x24 Output/USB-CAN Release/Obj/can.o
+                0x08000bfc                CANbus::filtercode(unsigned int)
  .text._ZN6CANbus7bitrateEj
-                0x08000ba8       0x60 Output/USB-CAN Release/Obj/can.o
-                0x08000ba8                CANbus::bitrate(unsigned int)
+                0x08000c20       0x60 Output/USB-CAN Release/Obj/can.o
+                0x08000c20                CANbus::bitrate(unsigned int)
  .text._ZN6CANbus7bitrateENS_7BitrateE
-                0x08000c08        0x8 Output/USB-CAN Release/Obj/can.o
-                0x08000c08                CANbus::bitrate(CANbus::Bitrate)
+                0x08000c80        0x8 Output/USB-CAN Release/Obj/can.o
+                0x08000c80                CANbus::bitrate(CANbus::Bitrate)
  .text._ZN6CANbus4openENS_8OpenModeE
-                0x08000c10       0xb0 Output/USB-CAN Release/Obj/can.o
-                0x08000c10                CANbus::open(CANbus::OpenMode)
+                0x08000c88       0xb0 Output/USB-CAN Release/Obj/can.o
+                0x08000c88                CANbus::open(CANbus::OpenMode)
  .text._ZN6CANbus5closeEv
-                0x08000cc0       0x38 Output/USB-CAN Release/Obj/can.o
-                0x08000cc0                CANbus::close()
+                0x08000d38       0x38 Output/USB-CAN Release/Obj/can.o
+                0x08000d38                CANbus::close()
  .text._ZN6CANbus9timestampEb
-                0x08000cf8        0xc Output/USB-CAN Release/Obj/can.o
-                0x08000cf8                CANbus::timestamp(bool)
+                0x08000d70        0xc Output/USB-CAN Release/Obj/can.o
+                0x08000d70                CANbus::timestamp(bool)
  .text._ZN6CANbus9timestampEv
-                0x08000d04        0xc Output/USB-CAN Release/Obj/can.o
-                0x08000d04                CANbus::timestamp()
+                0x08000d7c        0xc Output/USB-CAN Release/Obj/can.o
+                0x08000d7c                CANbus::timestamp()
  .text._ZN6CANbus4sendERNS_5TxMsgE
-                0x08000d10       0x78 Output/USB-CAN Release/Obj/can.o
-                0x08000d10                CANbus::send(CANbus::TxMsg&)
+                0x08000d88       0x78 Output/USB-CAN Release/Obj/can.o
+                0x08000d88                CANbus::send(CANbus::TxMsg&)
  .text._ZN6CANbus9set_rx_cbEPFvRNS_5RxMsgEE
-                0x08000d88       0x14 Output/USB-CAN Release/Obj/can.o
-                0x08000d88                CANbus::set_rx_cb(void (*)(CANbus::RxMsg&))
+                0x08000e00       0x14 Output/USB-CAN Release/Obj/can.o
+                0x08000e00                CANbus::set_rx_cb(void (*)(CANbus::RxMsg&))
  .text.CEC_CAN_IRQHandler
-                0x08000d9c       0x9c Output/USB-CAN Release/Obj/can.o
-                0x08000d9c                CEC_CAN_IRQHandler
+                0x08000e14       0x9c Output/USB-CAN Release/Obj/can.o
+                0x08000e14                CEC_CAN_IRQHandler
  .text._GLOBAL__sub_I__ZN6CANbus4initEv
-                0x08000e38       0x20 Output/USB-CAN Release/Obj/can.o
- .text.CTR      0x08000e58      0x41c Output/USB-CAN Release/Obj/usb_dcd_int.o
-                0x08000e58                CTR
+                0x08000eb0       0x20 Output/USB-CAN Release/Obj/can.o
+ .text.CTR      0x08000ed0      0x41c Output/USB-CAN Release/Obj/usb_dcd_int.o
+                0x08000ed0                CTR
  .text.USB_Istr
-                0x08001274      0x118 Output/USB-CAN Release/Obj/usb_dcd_int.o
-                0x08001274                USB_Istr
- .text.SetCNTR  0x0800138c        0xc Output/USB-CAN Release/Obj/usb_core.o
-                0x0800138c                SetCNTR
- .text.SetISTR  0x08001398        0xc Output/USB-CAN Release/Obj/usb_core.o
-                0x08001398                SetISTR
+                0x080012ec      0x118 Output/USB-CAN Release/Obj/usb_dcd_int.o
+                0x080012ec                USB_Istr
+ .text.SetCNTR  0x08001404        0xc Output/USB-CAN Release/Obj/usb_core.o
+                0x08001404                SetCNTR
+ .text.SetISTR  0x08001410        0xc Output/USB-CAN Release/Obj/usb_core.o
+                0x08001410                SetISTR
  .text.SetBTABLE
-                0x080013a4       0x10 Output/USB-CAN Release/Obj/usb_core.o
-                0x080013a4                SetBTABLE
+                0x0800141c       0x10 Output/USB-CAN Release/Obj/usb_core.o
+                0x0800141c                SetBTABLE
  .text.GetENDPOINT
-                0x080013b4       0x14 Output/USB-CAN Release/Obj/usb_core.o
-                0x080013b4                GetENDPOINT
+                0x0800142c       0x14 Output/USB-CAN Release/Obj/usb_core.o
+                0x0800142c                GetENDPOINT
  .text.SetEPType
-                0x080013c8       0x20 Output/USB-CAN Release/Obj/usb_core.o
-                0x080013c8                SetEPType
+                0x08001440       0x20 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001440                SetEPType
  .text.SetEPTxStatus
-                0x080013e8       0x34 Output/USB-CAN Release/Obj/usb_core.o
-                0x080013e8                SetEPTxStatus
+                0x08001460       0x34 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001460                SetEPTxStatus
  .text.SetEPRxStatus
-                0x0800141c       0x38 Output/USB-CAN Release/Obj/usb_core.o
-                0x0800141c                SetEPRxStatus
+                0x08001494       0x38 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001494                SetEPRxStatus
  .text.SetEPDoubleBuff
-                0x08001454       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001454                SetEPDoubleBuff
+                0x080014cc       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x080014cc                SetEPDoubleBuff
  .text.ToggleDTOG_RX
-                0x08001478       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001478                ToggleDTOG_RX
+                0x080014f0       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x080014f0                ToggleDTOG_RX
  .text.ToggleDTOG_TX
-                0x0800149c       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x0800149c                ToggleDTOG_TX
+                0x08001514       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001514                ToggleDTOG_TX
  .text.ClearDTOG_RX
-                0x080014c0       0x28 Output/USB-CAN Release/Obj/usb_core.o
-                0x080014c0                ClearDTOG_RX
+                0x08001538       0x28 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001538                ClearDTOG_RX
  .text.ClearDTOG_TX
-                0x080014e8       0x28 Output/USB-CAN Release/Obj/usb_core.o
-                0x080014e8                ClearDTOG_TX
+                0x08001560       0x28 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001560                ClearDTOG_TX
  .text.SetEPTxAddr
-                0x08001510       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001510                SetEPTxAddr
+                0x08001588       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001588                SetEPTxAddr
  .text.SetEPRxAddr
-                0x08001534       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001534                SetEPRxAddr
+                0x080015ac       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x080015ac                SetEPRxAddr
  .text.SetEPTxCount
-                0x08001558       0x20 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001558                SetEPTxCount
+                0x080015d0       0x20 Output/USB-CAN Release/Obj/usb_core.o
+                0x080015d0                SetEPTxCount
  .text.SetEPRxCount
-                0x08001578       0x44 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001578                SetEPRxCount
+                0x080015f0       0x44 Output/USB-CAN Release/Obj/usb_core.o
+                0x080015f0                SetEPRxCount
  .text.GetEPTxCount
-                0x080015bc       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x080015bc                GetEPTxCount
+                0x08001634       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001634                GetEPTxCount
  .text.GetEPRxCount
-                0x080015e0       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x080015e0                GetEPRxCount
+                0x08001658       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001658                GetEPRxCount
  .text.SetEPDblBuffAddr
-                0x08001604       0x3c Output/USB-CAN Release/Obj/usb_core.o
-                0x08001604                SetEPDblBuffAddr
+                0x0800167c       0x3c Output/USB-CAN Release/Obj/usb_core.o
+                0x0800167c                SetEPDblBuffAddr
  .text.SetEPDblBuffCount
-                0x08001640       0xbc Output/USB-CAN Release/Obj/usb_core.o
-                0x08001640                SetEPDblBuffCount
+                0x080016b8       0xbc Output/USB-CAN Release/Obj/usb_core.o
+                0x080016b8                SetEPDblBuffCount
  .text.GetEPDblBuf0Count
-                0x080016fc       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x080016fc                GetEPDblBuf0Count
+                0x08001774       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001774                GetEPDblBuf0Count
  .text.GetEPDblBuf1Count
-                0x08001720       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001720                GetEPDblBuf1Count
+                0x08001798       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x08001798                GetEPDblBuf1Count
  .text.FreeUserBuffer
-                0x08001744       0x44 Output/USB-CAN Release/Obj/usb_core.o
-                0x08001744                FreeUserBuffer
+                0x080017bc       0x44 Output/USB-CAN Release/Obj/usb_core.o
+                0x080017bc                FreeUserBuffer
  .text.UserToPMABufferCopy
-                0x08001788       0x2c Output/USB-CAN Release/Obj/usb_core.o
-                0x08001788                UserToPMABufferCopy
+                0x08001800       0x2c Output/USB-CAN Release/Obj/usb_core.o
+                0x08001800                UserToPMABufferCopy
  .text.PMAToUserBufferCopy
-                0x080017b4       0x24 Output/USB-CAN Release/Obj/usb_core.o
-                0x080017b4                PMAToUserBufferCopy
+                0x0800182c       0x24 Output/USB-CAN Release/Obj/usb_core.o
+                0x0800182c                PMAToUserBufferCopy
  .text.DCD_Init
-                0x080017d8       0x38 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x080017d8                DCD_Init
+                0x08001850       0x38 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001850                DCD_Init
  .text.DCD_PMA_Config
-                0x08001810       0x3c Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001810                DCD_PMA_Config
+                0x08001888       0x3c Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001888                DCD_PMA_Config
  .text.DCD_EP_Open
-                0x0800184c      0x138 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x0800184c                DCD_EP_Open
+                0x080018c4      0x138 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x080018c4                DCD_EP_Open
  .text.DCD_EP_Close
-                0x08001984       0xa4 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001984                DCD_EP_Close
+                0x080019fc       0xa4 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x080019fc                DCD_EP_Close
  .text.DCD_EP_PrepareRx
-                0x08001a28       0xac Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001a28                DCD_EP_PrepareRx
+                0x08001aa0       0xac Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001aa0                DCD_EP_PrepareRx
  .text.DCD_EP_Tx
-                0x08001ad4       0xc4 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001ad4                DCD_EP_Tx
+                0x08001b4c       0xc4 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001b4c                DCD_EP_Tx
  .text.DCD_EP_Stall
-                0x08001b98       0x74 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001b98                DCD_EP_Stall
+                0x08001c10       0x74 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001c10                DCD_EP_Stall
  .text.DCD_EP_ClrStall
-                0x08001c0c       0x54 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001c0c                DCD_EP_ClrStall
+                0x08001c84       0x54 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001c84                DCD_EP_ClrStall
  .text.DCD_EP_SetAddress
-                0x08001c60       0x44 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001c60                DCD_EP_SetAddress
+                0x08001cd8       0x44 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001cd8                DCD_EP_SetAddress
  .text.DCD_DevConnect
-                0x08001ca4       0x18 Output/USB-CAN Release/Obj/usb_dcd.o
-                0x08001ca4                DCD_DevConnect
+                0x08001d1c       0x18 Output/USB-CAN Release/Obj/usb_dcd.o
+                0x08001d1c                DCD_DevConnect
  .text.usbd_cdc_EP0_RxReady
-                0x08001cbc       0x30 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001cbc                usbd_cdc_EP0_RxReady
+                0x08001d34       0x30 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001d34                usbd_cdc_EP0_RxReady
  .text.USBD_cdc_GetCfgDesc
-                0x08001cec        0xc Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001d64        0xc Output/USB-CAN Release/Obj/usbd_cdc_core.o
  .text.usbd_cdc_Init
-                0x08001cf8       0x6c Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001cf8                usbd_cdc_Init
+                0x08001d70       0x6c Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001d70                usbd_cdc_Init
  .text.usbd_cdc_DataOut
-                0x08001d64       0x34 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001d64                usbd_cdc_DataOut
+                0x08001ddc       0x34 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001ddc                usbd_cdc_DataOut
  .text.usbd_cdc_DeInit
-                0x08001d98       0x28 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001d98                usbd_cdc_DeInit
+                0x08001e10       0x28 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001e10                usbd_cdc_DeInit
  .text.usbd_cdc_Setup
-                0x08001dc0       0xd8 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001dc0                usbd_cdc_Setup
+                0x08001e38       0xd8 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001e38                usbd_cdc_Setup
  .text.usbd_cdc_DataIn
-                0x08001e98       0x80 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001e98                usbd_cdc_DataIn
+                0x08001f10       0x80 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001f10                usbd_cdc_DataIn
  .text.usbd_cdc_SOF
-                0x08001f18       0xd4 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08001f18                usbd_cdc_SOF
+                0x08001f90       0xd4 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08001f90                usbd_cdc_SOF
  .text.USBD_StdDevReq
-                0x08001fec      0x2ac Output/USB-CAN Release/Obj/usbd_req.o
-                0x08001fec                USBD_StdDevReq
+                0x08002064      0x2ac Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002064                USBD_StdDevReq
  .text.USBD_StdItfReq
-                0x08002298       0x48 Output/USB-CAN Release/Obj/usbd_req.o
-                0x08002298                USBD_StdItfReq
+                0x08002310       0x48 Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002310                USBD_StdItfReq
  .text.USBD_StdEPReq
-                0x080022e0      0x100 Output/USB-CAN Release/Obj/usbd_req.o
-                0x080022e0                USBD_StdEPReq
+                0x08002358      0x100 Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002358                USBD_StdEPReq
  .text.USBD_ParseSetupRequest
-                0x080023e0       0x30 Output/USB-CAN Release/Obj/usbd_req.o
-                0x080023e0                USBD_ParseSetupRequest
+                0x08002458       0x30 Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002458                USBD_ParseSetupRequest
  .text.USBD_CtlError
-                0x08002410        0xc Output/USB-CAN Release/Obj/usbd_req.o
-                0x08002410                USBD_CtlError
+                0x08002488        0xc Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002488                USBD_CtlError
  .text.USBD_GetString
-                0x0800241c       0x4c Output/USB-CAN Release/Obj/usbd_req.o
-                0x0800241c                USBD_GetString
+                0x08002494       0x4c Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002494                USBD_GetString
  .text.USBD_Resume
-                0x08002468       0x18 Output/USB-CAN Release/Obj/usbd_core.o
+                0x080024e0       0x18 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_Suspend
-                0x08002480       0x18 Output/USB-CAN Release/Obj/usbd_core.o
+                0x080024f8       0x18 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_SOF
-                0x08002498       0x14 Output/USB-CAN Release/Obj/usbd_core.o
+                0x08002510       0x14 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_Reset
-                0x080024ac       0x48 Output/USB-CAN Release/Obj/usbd_core.o
+                0x08002524       0x48 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_SetupStage
-                0x080024f4       0x50 Output/USB-CAN Release/Obj/usbd_core.o
+                0x0800256c       0x50 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_DataInStage
-                0x08002544       0xa0 Output/USB-CAN Release/Obj/usbd_core.o
+                0x080025bc       0xa0 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_DataOutStage
-                0x080025e4       0x68 Output/USB-CAN Release/Obj/usbd_core.o
+                0x0800265c       0x68 Output/USB-CAN Release/Obj/usbd_core.o
  .text.USBD_Init
-                0x0800264c       0x3c Output/USB-CAN Release/Obj/usbd_core.o
-                0x0800264c                USBD_Init
+                0x080026c4       0x3c Output/USB-CAN Release/Obj/usbd_core.o
+                0x080026c4                USBD_Init
  .text.USBD_SetCfg
-                0x08002688       0x1c Output/USB-CAN Release/Obj/usbd_core.o
-                0x08002688                USBD_SetCfg
+                0x08002700       0x1c Output/USB-CAN Release/Obj/usbd_core.o
+                0x08002700                USBD_SetCfg
  .text.USBD_ClrCfg
-                0x080026a4       0x10 Output/USB-CAN Release/Obj/usbd_core.o
-                0x080026a4                USBD_ClrCfg
+                0x0800271c       0x10 Output/USB-CAN Release/Obj/usbd_core.o
+                0x0800271c                USBD_ClrCfg
  .text.USBD_CtlSendData
-                0x080026b4       0x18 Output/USB-CAN Release/Obj/usbd_ioreq.o
-                0x080026b4                USBD_CtlSendData
+                0x0800272c       0x18 Output/USB-CAN Release/Obj/usbd_ioreq.o
+                0x0800272c                USBD_CtlSendData
  .text.USBD_CtlContinueSendData
-                0x080026cc       0x10 Output/USB-CAN Release/Obj/usbd_ioreq.o
-                0x080026cc                USBD_CtlContinueSendData
+                0x08002744       0x10 Output/USB-CAN Release/Obj/usbd_ioreq.o
+                0x08002744                USBD_CtlContinueSendData
  .text.USBD_CtlPrepareRx
-                0x080026dc       0x1c Output/USB-CAN Release/Obj/usbd_ioreq.o
-                0x080026dc                USBD_CtlPrepareRx
+                0x08002754       0x1c Output/USB-CAN Release/Obj/usbd_ioreq.o
+                0x08002754                USBD_CtlPrepareRx
  .text.USBD_CtlContinueRx
-                0x080026f8       0x10 Output/USB-CAN Release/Obj/usbd_ioreq.o
-                0x080026f8                USBD_CtlContinueRx
+                0x08002770       0x10 Output/USB-CAN Release/Obj/usbd_ioreq.o
+                0x08002770                USBD_CtlContinueRx
  .text.USBD_CtlSendStatus
-                0x08002708       0x14 Output/USB-CAN Release/Obj/usbd_ioreq.o
-                0x08002708                USBD_CtlSendStatus
+                0x08002780       0x14 Output/USB-CAN Release/Obj/usbd_ioreq.o
+                0x08002780                USBD_CtlSendStatus
  .text.USBD_CtlReceiveStatus
-                0x0800271c       0x14 Output/USB-CAN Release/Obj/usbd_ioreq.o
-                0x0800271c                USBD_CtlReceiveStatus
+                0x08002794       0x14 Output/USB-CAN Release/Obj/usbd_ioreq.o
+                0x08002794                USBD_CtlReceiveStatus
  .text.USB_IRQHandler
-                0x08002730        0x8 Output/USB-CAN Release/Obj/usb_bsp.o
-                0x08002730                USB_IRQHandler
+                0x080027a8        0x8 Output/USB-CAN Release/Obj/usb_bsp.o
+                0x080027a8                USB_IRQHandler
  .text.USB_BSP_Init
-                0x08002738       0x50 Output/USB-CAN Release/Obj/usb_bsp.o
-                0x08002738                USB_BSP_Init
+                0x080027b0       0x50 Output/USB-CAN Release/Obj/usb_bsp.o
+                0x080027b0                USB_BSP_Init
  .text.USB_BSP_EnableInterrupt
-                0x08002788       0x20 Output/USB-CAN Release/Obj/usb_bsp.o
-                0x08002788                USB_BSP_EnableInterrupt
+                0x08002800       0x20 Output/USB-CAN Release/Obj/usb_bsp.o
+                0x08002800                USB_BSP_EnableInterrupt
  .text.VCP_Init
-                0x080027a8        0x4 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
+                0x08002820        0x4 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
  .text.VCP_DeInit
-                0x080027ac        0x4 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
+                0x08002824        0x4 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
  .text.VCP_Ctrl
-                0x080027b0        0x4 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
+                0x08002828        0x4 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
  .text.VCP_DataTx
-                0x080027b4       0x4c Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
-                0x080027b4                VCP_DataTx
+                0x0800282c       0x4c Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
+                0x0800282c                VCP_DataTx
  .text.VCP_DataRx
-                0x08002800        0x8 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
+                0x08002878        0x8 Output/USB-CAN Release/Obj/usbd_cdc_vcp.o
  .text.USBD_USR_DeviceDescriptor
-                0x08002808        0xc Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002808                USBD_USR_DeviceDescriptor
+                0x08002880        0xc Output/USB-CAN Release/Obj/usbd_desc.o
+                0x08002880                USBD_USR_DeviceDescriptor
  .text.USBD_USR_LangIDStrDescriptor
-                0x08002814        0xc Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002814                USBD_USR_LangIDStrDescriptor
+                0x0800288c        0xc Output/USB-CAN Release/Obj/usbd_desc.o
+                0x0800288c                USBD_USR_LangIDStrDescriptor
  .text.USBD_USR_SerialStrDescriptor
-                0x08002820        0xc Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002820                USBD_USR_SerialStrDescriptor
+                0x08002898        0xc Output/USB-CAN Release/Obj/usbd_desc.o
+                0x08002898                USBD_USR_SerialStrDescriptor
  .text.IntToUnicode
-                0x0800282c       0x30 Output/USB-CAN Release/Obj/usbd_desc.o
+                0x080028a4       0x30 Output/USB-CAN Release/Obj/usbd_desc.o
  .text.USBD_USR_ProductStrDescriptor
-                0x0800285c       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
-                0x0800285c                USBD_USR_ProductStrDescriptor
+                0x080028d4       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
+                0x080028d4                USBD_USR_ProductStrDescriptor
  .text.USBD_USR_ManufacturerStrDescriptor
-                0x08002878       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002878                USBD_USR_ManufacturerStrDescriptor
+                0x080028f0       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
+                0x080028f0                USBD_USR_ManufacturerStrDescriptor
  .text.USBD_USR_ConfigStrDescriptor
-                0x08002894       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002894                USBD_USR_ConfigStrDescriptor
+                0x0800290c       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
+                0x0800290c                USBD_USR_ConfigStrDescriptor
  .text.USBD_USR_InterfaceStrDescriptor
-                0x080028b0       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
-                0x080028b0                USBD_USR_InterfaceStrDescriptor
+                0x08002928       0x1c Output/USB-CAN Release/Obj/usbd_desc.o
+                0x08002928                USBD_USR_InterfaceStrDescriptor
  .text.Get_SerialNum
-                0x080028cc       0x3c Output/USB-CAN Release/Obj/usbd_desc.o
-                0x080028cc                Get_SerialNum
- .text.Suspend  0x08002908       0x1c Output/USB-CAN Release/Obj/usbd_pwr.o
-                0x08002908                Suspend
+                0x08002944       0x3c Output/USB-CAN Release/Obj/usbd_desc.o
+                0x08002944                Get_SerialNum
+ .text.Suspend  0x08002980       0x1c Output/USB-CAN Release/Obj/usbd_pwr.o
+                0x08002980                Suspend
  .text.Resume_Init
-                0x08002924       0x1c Output/USB-CAN Release/Obj/usbd_pwr.o
-                0x08002924                Resume_Init
- .text.Resume   0x08002940       0xcc Output/USB-CAN Release/Obj/usbd_pwr.o
-                0x08002940                Resume
+                0x0800299c       0x1c Output/USB-CAN Release/Obj/usbd_pwr.o
+                0x0800299c                Resume_Init
+ .text.Resume   0x080029b8       0xcc Output/USB-CAN Release/Obj/usbd_pwr.o
+                0x080029b8                Resume
  .text.USBD_USR_Init
-                0x08002a0c        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
-                0x08002a0c                USBD_USR_Init
+                0x08002a84        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
+                0x08002a84                USBD_USR_Init
  .text.USBD_USR_DeviceReset
-                0x08002a10        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
-                0x08002a10                USBD_USR_DeviceReset
+                0x08002a88        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
+                0x08002a88                USBD_USR_DeviceReset
  .text.USBD_USR_DeviceConfigured
-                0x08002a14        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
-                0x08002a14                USBD_USR_DeviceConfigured
+                0x08002a8c        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
+                0x08002a8c                USBD_USR_DeviceConfigured
  .text.USBD_USR_DeviceSuspended
-                0x08002a18        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
-                0x08002a18                USBD_USR_DeviceSuspended
+                0x08002a90        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
+                0x08002a90                USBD_USR_DeviceSuspended
  .text.USBD_USR_DeviceResumed
-                0x08002a1c        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
-                0x08002a1c                USBD_USR_DeviceResumed
+                0x08002a94        0x4 Output/USB-CAN Release/Obj/usbd_usr.o
+                0x08002a94                USBD_USR_DeviceResumed
  .text._ZN5Timer4initEv
-                0x08002a20      0x108 Output/USB-CAN Release/Obj/Timer.o
-                0x08002a20                Timer::init()
+                0x08002a98      0x108 Output/USB-CAN Release/Obj/Timer.o
+                0x08002a98                Timer::init()
  .text._ZN8TimerLed4initEv
-                0x08002b28       0x6c Output/USB-CAN Release/Obj/timer_led.o
-                0x08002b28                TimerLed::init()
+                0x08002ba0       0x6c Output/USB-CAN Release/Obj/timer_led.o
+                0x08002ba0                TimerLed::init()
  .text._ZN8TimerLed8calc_ccrEj
-                0x08002b94       0x1c Output/USB-CAN Release/Obj/timer_led.o
-                0x08002b94                TimerLed::calc_ccr(unsigned int)
+                0x08002c0c       0x1c Output/USB-CAN Release/Obj/timer_led.o
+                0x08002c0c                TimerLed::calc_ccr(unsigned int)
  .text._ZN8TimerLed8rx_blinkEj
-                0x08002bb0       0x28 Output/USB-CAN Release/Obj/timer_led.o
-                0x08002bb0                TimerLed::rx_blink(unsigned int)
+                0x08002c28       0x28 Output/USB-CAN Release/Obj/timer_led.o
+                0x08002c28                TimerLed::rx_blink(unsigned int)
  .text._ZN8TimerLed8tx_blinkEj
-                0x08002bd8       0x28 Output/USB-CAN Release/Obj/timer_led.o
-                0x08002bd8                TimerLed::tx_blink(unsigned int)
+                0x08002c50       0x28 Output/USB-CAN Release/Obj/timer_led.o
+                0x08002c50                TimerLed::tx_blink(unsigned int)
  .text._ZN8TimerLed4linkEb
-                0x08002c00       0x28 Output/USB-CAN Release/Obj/timer_led.o
-                0x08002c00                TimerLed::link(bool)
+                0x08002c78       0x28 Output/USB-CAN Release/Obj/timer_led.o
+                0x08002c78                TimerLed::link(bool)
  .text.TIM15_IRQHandler
-                0x08002c28       0x58 Output/USB-CAN Release/Obj/timer_led.o
-                0x08002c28                TIM15_IRQHandler
+                0x08002ca0       0x58 Output/USB-CAN Release/Obj/timer_led.o
+                0x08002ca0                TIM15_IRQHandler
  .text._GLOBAL__sub_I_led_link
-                0x08002c80       0x34 Output/USB-CAN Release/Obj/timer_led.o
+                0x08002cf8       0x34 Output/USB-CAN Release/Obj/timer_led.o
  .text.libc.__aeabi_uidivmod
-                0x08002cb4       0x2c C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc_asm.o)
-                0x08002cb4                __aeabi_uidivmod
-                0x08002cb4                __int32_udivmod
+                0x08002d2c       0x2c C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc_asm.o)
+                0x08002d2c                __aeabi_uidivmod
+                0x08002d2c                __int32_udivmod
  .text.libc.__RAL_ascii_isctype
-                0x08002ce0       0x1c C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002d58       0x1c C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
  .text.libc.__RAL_ascii_toupper
-                0x08002cfc       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002d74       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
  .text.libc.__RAL_ascii_tolower
-                0x08002d0c       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002d84       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
  .text.libc.__RAL_ascii_iswctype
-                0x08002d1c       0x1c C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002d94       0x1c C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
  .text.libc.__RAL_ascii_towupper
-                0x08002d38       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002db0       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
  .text.libc.__RAL_ascii_towlower
-                0x08002d48       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002dc0       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
  .text.libc.__RAL_ascii_wctomb
-                0x08002d58       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08002d58                __RAL_ascii_wctomb
+                0x08002dd0       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002dd0                __RAL_ascii_wctomb
  .text.libc.__RAL_ascii_mbtowc
-                0x08002d68       0x28 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08002d68                __RAL_ascii_mbtowc
+                0x08002de0       0x28 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002de0                __RAL_ascii_mbtowc
  .text.libc.__RAL_isctype
-                0x08002d90       0x14 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08002d90                __RAL_isctype
+                0x08002e08       0x14 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002e08                __RAL_isctype
  .text.libc.isdigit
-                0x08002da4        0xc C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08002da4                isdigit
+                0x08002e1c        0xc C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002e1c                isdigit
  .text.libc.isxdigit
-                0x08002db0        0xc C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08002db0                isxdigit
+                0x08002e28        0xc C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002e28                isxdigit
  .text.libc.tolower
-                0x08002dbc       0x14 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08002dbc                tolower
+                0x08002e34       0x14 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08002e34                tolower
  .text.libc.memset
-                0x08002dd0       0x14 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2_asm.o)
-                0x08002dd0                memset
+                0x08002e48       0x14 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2_asm.o)
+                0x08002e48                memset
  .text.libc.strlen
-                0x08002de4       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2_asm.o)
-                0x08002de4                strlen
-                0x08002df4                __text_end__ = (__text_start__ + SIZEOF (.text))
-                0x00002a48                __text_size__ = SIZEOF (.text)
-                0x08002df4                __text_load_end__ = __text_end__
+                0x08002e5c       0x10 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2_asm.o)
+                0x08002e5c                strlen
+                0x08002e6c                __text_end__ = (__text_start__ + SIZEOF (.text))
+                0x00002ac0                __text_size__ = SIZEOF (.text)
+                0x08002e6c                __text_load_end__ = __text_end__
 
 .vfp11_veneer   0x00000000        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
@@ -2443,144 +2443,144 @@ Linker script and memory map
 .iplt           0x00000000        0x0
  .iplt          0x00000000        0x0 Output/USB-CAN Release/Obj/system_stm32f0xx.o
                 0x00000001                . = ASSERT (((__text_start__ == __text_end__) || ((__text_end__ >= __FLASH_segment_start__) && (__text_end__ <= __FLASH_segment_end__))), error: .text is too large to fit in FLASH memory segment)
-                0x08002df4                __dtors_load_start__ = ALIGN (__text_end__, 0x4)
+                0x08002e6c                __dtors_load_start__ = ALIGN (__text_end__, 0x4)
 
-.dtors          0x08002df4        0x0
-                0x08002df4                __dtors_start__ = .
+.dtors          0x08002e6c        0x0
+                0x08002e6c                __dtors_start__ = .
  *(SORT(.dtors.*))
  *(.dtors)
  *(.fini_array)
  *(SORT(.fini_array.*))
-                0x08002df4                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
+                0x08002e6c                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
                 0x00000000                __dtors_size__ = SIZEOF (.dtors)
-                0x08002df4                __dtors_load_end__ = __dtors_end__
+                0x08002e6c                __dtors_load_end__ = __dtors_end__
                 0x00000001                . = ASSERT (((__dtors_start__ == __dtors_end__) || ((__dtors_end__ >= __FLASH_segment_start__) && (__dtors_end__ <= __FLASH_segment_end__))), error: .dtors is too large to fit in FLASH memory segment)
-                0x08002df4                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
+                0x08002e6c                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
 
-.ctors          0x08002df4        0xc
-                0x08002df4                __ctors_start__ = .
+.ctors          0x08002e6c        0xc
+                0x08002e6c                __ctors_start__ = .
  *(SORT(.ctors.*))
  *(.ctors)
  *(.init_array)
- .init_array    0x08002df4        0x4 Output/USB-CAN Release/Obj/main.o
- .init_array    0x08002df8        0x4 Output/USB-CAN Release/Obj/can.o
- .init_array    0x08002dfc        0x4 Output/USB-CAN Release/Obj/timer_led.o
+ .init_array    0x08002e6c        0x4 Output/USB-CAN Release/Obj/main.o
+ .init_array    0x08002e70        0x4 Output/USB-CAN Release/Obj/can.o
+ .init_array    0x08002e74        0x4 Output/USB-CAN Release/Obj/timer_led.o
  *(SORT(.init_array.*))
-                0x08002e00                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
+                0x08002e78                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
                 0x0000000c                __ctors_size__ = SIZEOF (.ctors)
-                0x08002e00                __ctors_load_end__ = __ctors_end__
+                0x08002e78                __ctors_load_end__ = __ctors_end__
                 0x00000001                . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= __FLASH_segment_end__))), error: .ctors is too large to fit in FLASH memory segment)
-                0x08002e00                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
+                0x08002e78                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x08002e00      0x554
-                0x08002e00                __rodata_start__ = .
+.rodata         0x08002e78      0x554
+                0x08002e78                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata.main   0x08002e00       0xf0 Output/USB-CAN Release/Obj/main.o
+ .rodata.main   0x08002e78       0xf0 Output/USB-CAN Release/Obj/main.o
  .rodata.str1.4
-                0x08002ef0       0x22 Output/USB-CAN Release/Obj/main.o
- *fill*         0x08002f12        0x2 
+                0x08002f68       0x22 Output/USB-CAN Release/Obj/main.o
+ *fill*         0x08002f8a        0x2 
  .rodata.usbd_cdc_CfgDesc
-                0x08002f14       0x43 Output/USB-CAN Release/Obj/usbd_cdc_core.o
-                0x08002f14                usbd_cdc_CfgDesc
- *fill*         0x08002f57        0x1 
+                0x08002f8c       0x43 Output/USB-CAN Release/Obj/usbd_cdc_core.o
+                0x08002f8c                usbd_cdc_CfgDesc
+ *fill*         0x08002fcf        0x1 
  .rodata.USBD_StdDevReq
-                0x08002f58       0x60 Output/USB-CAN Release/Obj/usbd_req.o
+                0x08002fd0       0x60 Output/USB-CAN Release/Obj/usbd_req.o
  .rodata.USBD_LangIDDesc
-                0x08002fb8        0x4 Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002fb8                USBD_LangIDDesc
+                0x08003030        0x4 Output/USB-CAN Release/Obj/usbd_desc.o
+                0x08003030                USBD_LangIDDesc
  .rodata.USBD_DeviceDesc
-                0x08002fbc       0x12 Output/USB-CAN Release/Obj/usbd_desc.o
-                0x08002fbc                USBD_DeviceDesc
- *fill*         0x08002fce        0x2 
+                0x08003034       0x12 Output/USB-CAN Release/Obj/usbd_desc.o
+                0x08003034                USBD_DeviceDesc
+ *fill*         0x08003046        0x2 
  .rodata.str1.4
-                0x08002fd0       0x52 Output/USB-CAN Release/Obj/usbd_desc.o
- *fill*         0x08003022        0x2 
+                0x08003048       0x52 Output/USB-CAN Release/Obj/usbd_desc.o
+ *fill*         0x0800309a        0x2 
  .rodata.Resume
-                0x08003024       0x18 Output/USB-CAN Release/Obj/usbd_pwr.o
+                0x0800309c       0x18 Output/USB-CAN Release/Obj/usbd_pwr.o
  .rodata.libc.__RAL_c_locale_abbrev_month_names
-                0x0800303c       0x31 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x0800303c                __RAL_c_locale_abbrev_month_names
- *fill*         0x0800306d        0x3 
+                0x080030b4       0x31 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080030b4                __RAL_c_locale_abbrev_month_names
+ *fill*         0x080030e5        0x3 
  .rodata.libc.__RAL_data_utf8_period
-                0x08003070        0x2 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08003070                __RAL_data_utf8_period
- *fill*         0x08003072        0x2 
+                0x080030e8        0x2 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080030e8                __RAL_data_utf8_period
+ *fill*         0x080030ea        0x2 
  .rodata.libc.str1.4
-                0x08003074       0xe4 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080030ec       0xe4 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
                                  0xf1 (size before relaxing)
  .rodata.libc.__RAL_data_empty_string
-                0x08003158        0x1 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08003158                __RAL_data_empty_string
- *fill*         0x08003159        0x3 
- .rodata.libc.__RAL_c_locale
-                0x0800315c        0xc C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x0800315c                __RAL_c_locale
- .rodata.libc.__RAL_ascii_ctype_mask
-                0x08003168        0xd C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
- *fill*         0x08003175        0x3 
- .rodata.libc.__RAL_c_locale_day_names
-                0x08003178       0x3a C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08003178                __RAL_c_locale_day_names
- *fill*         0x080031b2        0x2 
- .rodata.libc.__RAL_c_locale_abbrev_day_names
-                0x080031b4       0x1d C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080031b4                __RAL_c_locale_abbrev_day_names
+                0x080031d0        0x1 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080031d0                __RAL_data_empty_string
  *fill*         0x080031d1        0x3 
+ .rodata.libc.__RAL_c_locale
+                0x080031d4        0xc C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080031d4                __RAL_c_locale
+ .rodata.libc.__RAL_ascii_ctype_mask
+                0x080031e0        0xd C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+ *fill*         0x080031ed        0x3 
+ .rodata.libc.__RAL_c_locale_day_names
+                0x080031f0       0x3a C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080031f0                __RAL_c_locale_day_names
+ *fill*         0x0800322a        0x2 
+ .rodata.libc.__RAL_c_locale_abbrev_day_names
+                0x0800322c       0x1d C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x0800322c                __RAL_c_locale_abbrev_day_names
+ *fill*         0x08003249        0x3 
  .rodata.libc.__RAL_c_locale_am_pm_indicator
-                0x080031d4        0x7 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080031d4                __RAL_c_locale_am_pm_indicator
- *fill*         0x080031db        0x1 
+                0x0800324c        0x7 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x0800324c                __RAL_c_locale_am_pm_indicator
+ *fill*         0x08003253        0x1 
  .rodata.libc.__RAL_c_locale_data
-                0x080031dc       0x58 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080031dc                __RAL_c_locale_data
+                0x08003254       0x58 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08003254                __RAL_c_locale_data
  .rodata.libc.__RAL_codeset_ascii
-                0x08003234       0x20 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08003234                __RAL_codeset_ascii
+                0x080032ac       0x20 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080032ac                __RAL_codeset_ascii
  .rodata.libc.__RAL_c_locale_month_names
-                0x08003254       0x57 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x08003254                __RAL_c_locale_month_names
- *fill*         0x080032ab        0x1 
+                0x080032cc       0x57 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x080032cc                __RAL_c_locale_month_names
+ *fill*         0x08003323        0x1 
  .rodata.libc.__RAL_c_locale_date_time_format
-                0x080032ac        0xf C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080032ac                __RAL_c_locale_date_time_format
- *fill*         0x080032bb        0x1 
+                0x08003324        0xf C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08003324                __RAL_c_locale_date_time_format
+ *fill*         0x08003333        0x1 
  .rodata.libc.__RAL_c_locale_time_format
-                0x080032bc        0x9 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080032bc                __RAL_c_locale_time_format
- *fill*         0x080032c5        0x3 
+                0x08003334        0x9 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08003334                __RAL_c_locale_time_format
+ *fill*         0x0800333d        0x3 
  .rodata.libc.__RAL_c_locale_date_format
-                0x080032c8        0x9 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080032c8                __RAL_c_locale_date_format
- *fill*         0x080032d1        0x3 
+                0x08003340        0x9 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x08003340                __RAL_c_locale_date_format
+ *fill*         0x08003349        0x3 
  .rodata.libc.__RAL_ascii_ctype_map
-                0x080032d4       0x80 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
-                0x080032d4                __RAL_ascii_ctype_map
-                0x08003354                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x0800334c       0x80 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+                0x0800334c                __RAL_ascii_ctype_map
+                0x080033cc                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
                 0x00000554                __rodata_size__ = SIZEOF (.rodata)
-                0x08003354                __rodata_load_end__ = __rodata_end__
+                0x080033cc                __rodata_load_end__ = __rodata_end__
 
 .rel.dyn        0x08000000        0x0
  .rel.iplt      0x08000000        0x0 Output/USB-CAN Release/Obj/system_stm32f0xx.o
                 0x00000001                . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= __FLASH_segment_end__))), error: .rodata is too large to fit in FLASH memory segment)
-                0x08003354                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x080033cc                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x08003354        0x0
-                0x08003354                __ARM.exidx_start__ = .
-                0x08003354                __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x080033cc        0x0
+                0x080033cc                __ARM.exidx_start__ = .
+                0x080033cc                __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x08003354                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x080033cc                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x00000000                __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x08003354                __exidx_end = __ARM.exidx_end__
-                0x08003354                __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x080033cc                __exidx_end = __ARM.exidx_end__
+                0x080033cc                __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x00000001                . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ >= __FLASH_segment_start__) && (__ARM.exidx_end__ <= __FLASH_segment_end__))), error: .ARM.exidx is too large to fit in FLASH memory segment)
-                0x08003354                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x080033cc                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x20000000        0x0 load address 0x08003354
+.fast           0x20000000        0x0 load address 0x080033cc
                 0x20000000                __fast_start__ = .
  *(.fast .fast.*)
                 0x20000000                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x00000000                __fast_size__ = SIZEOF (.fast)
-                0x08003354                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x080033cc                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ >= __FLASH_segment_start__) && (__fast_load_end__ <= __FLASH_segment_end__))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x20000000        0x0
@@ -2590,9 +2590,9 @@ Linker script and memory map
                 0x00000000                __fast_run_size__ = SIZEOF (.fast_run)
                 0x20000000                __fast_run_load_end__ = __fast_run_end__
                 0x00000001                . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ >= __RAM_segment_start__) && (__fast_run_end__ <= __RAM_segment_end__))), error: .fast_run is too large to fit in RAM memory segment)
-                0x08003354                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x080033cc                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x20000000       0xc0 load address 0x08003354
+.data           0x20000000       0xc0 load address 0x080033cc
                 0x20000000                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data._ZL7btr_reg
@@ -2624,13 +2624,13 @@ Linker script and memory map
                 0x200000ac                __RAL_global_locale
                 0x200000c0                __data_end__ = (__data_start__ + SIZEOF (.data))
                 0x000000c0                __data_size__ = SIZEOF (.data)
-                0x08003414                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x0800348c                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x00000000        0x0
  .igot.plt      0x00000000        0x0 Output/USB-CAN Release/Obj/system_stm32f0xx.o
                 0x00000001                . = ASSERT (((__data_load_start__ == __data_load_end__) || ((__data_load_end__ >= __FLASH_segment_start__) && (__data_load_end__ <= __FLASH_segment_end__))), error: .data is too large to fit in FLASH memory segment)
 
-.data_run       0x20000000       0xc0 load address 0x08003354
+.data_run       0x20000000       0xc0 load address 0x080033cc
                 0x20000000                __data_run_start__ = .
                 0x200000c0                . = MAX ((__data_run_start__ + SIZEOF (.data)), .)
  *fill*         0x20000000       0xc0 
@@ -2638,16 +2638,16 @@ Linker script and memory map
                 0x000000c0                __data_run_size__ = SIZEOF (.data_run)
                 0x200000c0                __data_run_load_end__ = __data_run_end__
                 0x00000001                . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ >= __RAM_segment_start__) && (__data_run_end__ <= __RAM_segment_end__))), error: .data_run is too large to fit in RAM memory segment)
-                0x08003414                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x0800348c                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x200000c0        0x0 load address 0x08003414
+.tdata          0x200000c0        0x0 load address 0x0800348c
                 0x200000c0                __tdata_start__ = .
  *(.tdata .tdata.*)
                 0x200000c0                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x00000000                __tdata_size__ = SIZEOF (.tdata)
-                0x08003414                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x08003414                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x00003414                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
+                0x0800348c                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x0800348c                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x0000348c                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
                 0x00000001                . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ >= __FLASH_segment_start__) && (__tdata_load_end__ <= __FLASH_segment_end__))), error: .tdata is too large to fit in FLASH memory segment)
 
 .tdata_run      0x200000c0        0x0
@@ -2891,17 +2891,17 @@ OUTPUT(Output/Release/Exe/USB-CAN.elf elf32-littlearm)
  .ARM.attributes
                 0x000003ea       0x1b C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2_asm.o)
 
-.debug_line     0x00000000      0xead
- .debug_line    0x00000000      0x240 Output/USB-CAN Release/Obj/thumb_crt0.o
- .debug_line    0x00000240       0x94 Output/USB-CAN Release/Obj/STM32F0xx_Startup.o
- .debug_line    0x000002d4       0xaa Output/USB-CAN Release/Obj/STM32F072x_Vectors.o
- .debug_line    0x0000037e      0xb2f C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+.debug_line     0x00000000      0xe44
+ .debug_line    0x00000000      0x21d Output/USB-CAN Release/Obj/thumb_crt0.o
+ .debug_line    0x0000021d       0x71 Output/USB-CAN Release/Obj/STM32F0xx_Startup.o
+ .debug_line    0x0000028e       0x87 Output/USB-CAN Release/Obj/STM32F072x_Vectors.o
+ .debug_line    0x00000315      0xb2f C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
 
-.debug_info     0x00000000     0x2345
- .debug_info    0x00000000       0xad Output/USB-CAN Release/Obj/thumb_crt0.o
- .debug_info    0x000000ad       0xb8 Output/USB-CAN Release/Obj/STM32F0xx_Startup.o
- .debug_info    0x00000165       0xb9 Output/USB-CAN Release/Obj/STM32F072x_Vectors.o
- .debug_info    0x0000021e     0x2127 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
+.debug_info     0x00000000     0x2273
+ .debug_info    0x00000000       0x67 Output/USB-CAN Release/Obj/thumb_crt0.o
+ .debug_info    0x00000067       0x72 Output/USB-CAN Release/Obj/STM32F0xx_Startup.o
+ .debug_info    0x000000d9       0x73 Output/USB-CAN Release/Obj/STM32F072x_Vectors.o
+ .debug_info    0x0000014c     0x2127 C:/Program Files/Segger/SEGGER Embedded Studio 3.10g/lib/libc_v6m_t_le_eabi_swc.a(libc2.o)
 
 .debug_abbrev   0x00000000      0x19b
  .debug_abbrev  0x00000000       0x12 Output/USB-CAN Release/Obj/thumb_crt0.o
