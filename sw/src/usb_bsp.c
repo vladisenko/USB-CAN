@@ -57,6 +57,7 @@ void USB_IRQHandler(void)
 
 void USB_BSP_Init(USB_CORE_HANDLE *pdev)
 {
+  (void)pdev;
 #ifdef USB_DEVICE_LOW_PWR_MGMT_SUPPORT 
   EXTI_InitTypeDef EXTI_InitStructure;
 #endif /*USB_DEVICE_LOW_PWR_MGMT_SUPPORT */  
@@ -130,6 +131,7 @@ void USB_BSP_Init(USB_CORE_HANDLE *pdev)
   */
 void USB_BSP_EnableInterrupt(USB_CORE_HANDLE *pdev)
 {
+  (void)pdev;
   NVIC_SetPriority(USB_IRQn, USB_IT_PRIO);
   NVIC_EnableIRQ(USB_IRQn);
 }

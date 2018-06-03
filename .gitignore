@@ -47,5 +47,10 @@ Temporary Items
 .apdisk
 
 /sw/Output/Debug/
+/sw/Output/USB-CAN Release/
+/sw/Output/USB-CAN Debug/
 *.[od]
 *.ld
+*.jlink
+*.elf
+*.map

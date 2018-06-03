@@ -60,7 +60,7 @@ void USBD_USR_Init(void)
   */
 void USBD_USR_DeviceReset(uint8_t speed )
 {
-
+  (void)speed;
 }
 
 

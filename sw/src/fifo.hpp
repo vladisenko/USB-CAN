@@ -46,6 +46,22 @@ public:
     return false;
   }
 
+  bool front (T& data)
+  {
+    if (!empty())
+    {
+      size_t tmp = (out + 1)%SIZE;
+      data = buf[tmp];
+      return true;
+    }
+    return false;
+  }
+
+  void clear (void)
+  {
+    in = out = 0;
+  }
+
 };
 
 #endif // _FIFO_HPP_

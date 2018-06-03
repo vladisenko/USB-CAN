@@ -41,9 +41,10 @@
 extern uint8_t  APP_Rx_Buffer []; /* Write CDC received data in this buffer.
                                      These data will be sent over USB IN endpoint
                                      in the CDC core functions. */
-extern uint32_t APP_Rx_ptr_in;    /* Increment this pointer or roll it back to
+extern uint32_t APP_Rx_idx_in;    /* Increment this pointer or roll it back to
                                      start address when writing received data
                                      in the buffer APP_Rx_Buffer. */
+extern uint32_t APP_Rx_idx_out;
 
 /* Private function prototypes -----------------------------------------------*/
 static uint16_t VCP_Init     (void);
@@ -96,6 +97,9 @@ static uint16_t VCP_DeInit(void)
   */
 static uint16_t VCP_Ctrl (uint32_t Cmd, uint8_t* Buf, uint32_t Len)
 { 
+  (void)Cmd;
+  (void)Buf;
+  (void)Len;
   return USBD_OK;
 }
 
@@ -105,22 +109,27 @@ static uint16_t VCP_Ctrl (uint32_t Cmd, uint8_t* Buf, uint32_t Len)
   *         this function.
   * @param  Buf: Buffer of data to be sent
   * @param  Len: Number of data to be sent (in bytes)
-  * @retval Result of the operation: USBD_OK if all operations are OK else VCP_FAIL
+  * @retval Result of the operation: Number of bytes sent
   */
 uint16_t VCP_DataTx (uint8_t* Buf, uint32_t Len)
 {
-  for (uint32_t i = 0; i < Len; i++)
+  uint16_t i = 0;
+  while (i < Len)
   {
-    APP_Rx_Buffer[APP_Rx_ptr_in] = *Buf++;
-
-    APP_Rx_ptr_in++;
-
-    /* To avoid buffer overflow */
-    if(APP_Rx_ptr_in == APP_RX_DATA_SIZE) APP_Rx_ptr_in = 0;
-
+    uint32_t tmp = APP_Rx_idx_in + 1;
+    if (tmp >= APP_RX_DATA_SIZE)
+    {
+      tmp = 0;
+    }
+     
+    if (tmp == APP_Rx_idx_out)
+    {
+      break; /* buffer is full */
+    }
+    APP_Rx_Buffer[APP_Rx_idx_in] = Buf[i++];
+    APP_Rx_idx_in = tmp;
   }
-
-  return USBD_OK;
+  return i;
 }
 
 /**
@@ -139,7 +148,6 @@ uint16_t VCP_DataTx (uint8_t* Buf, uint32_t Len)
 static uint16_t VCP_DataRx (uint8_t* Buf, uint32_t Len)
 {
    return VCP_callback (Buf, Len);
-  //return USBD_OK;
 }
 
 

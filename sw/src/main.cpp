@@ -49,13 +49,13 @@ uint16_t VCP_callback(uint8_t* Buf, uint32_t Len)
 }
 
 
-inline void VCP_PutStr (const char* str)
+static inline void VCP_PutStr (const char* str)
 {
   VCP_DataTx((uint8_t*)str, strlen(str));
 }
 
 
-inline CANbus::Bitrate GetBitrate (uint8_t ch)
+static inline CANbus::Bitrate GetBitrate (uint8_t ch)
 {
   switch(ch)
   {
@@ -72,32 +72,32 @@ inline CANbus::Bitrate GetBitrate (uint8_t ch)
 }  
 
 
-inline uint8_t char_to_hex (char c)
+static inline uint8_t char_to_hex (char c)
 {
   uint8_t res;
   if (isdigit(c))
     res = c - '0';
-  else if (isxdigit(c))
-    res = tolower(c) - 'a' + 10;
+  else if (c >= 'a' && c <= 'f')
+    res = c - 'a' + 10;
+  else if (c >= 'A' && c <= 'F')
+    res = c - 'A' + 10;
   else
     res = 0xFF;
   return res;
 }
 
 
-inline char hex_to_char (uint8_t hex)
+static inline char hex_to_char (uint8_t hex)
 {
-  char res;
-  hex &= 0x0F;
-  if (hex < 10)
-    res = hex + '0';
-  else
-    res = hex + 'a' - 10;
-  return res;
+  const char tbl[16] = {'0', '1', '2', '3',
+                        '4', '5', '6', '7',
+                        '8', '9', 'A', 'B',
+                        'C', 'D', 'E', 'F'};
+  return tbl[hex & 0x0F];
 }
 
 
-inline uint32_t get_word (void)
+static inline uint32_t get_word (void)
 {
   uint8_t tmp;
   uint8_t i = 8;
@@ -111,7 +111,7 @@ inline uint32_t get_word (void)
 }
 
 
-inline uint32_t GetBitrateCustom (void)
+static inline uint32_t GetBitrateCustom (void)
 {
   uint8_t tmp;
   uint8_t i = 4;
@@ -127,7 +127,7 @@ inline uint32_t GetBitrateCustom (void)
 }
 
 
-CANbus::Status SebdCANMsg (uint8_t type)
+CANbus::Status SendCANMsg (uint8_t type)
 {
   CANbus::TxMsg msg;
   msg.Id = 0;
@@ -164,7 +164,7 @@ CANbus::Status SebdCANMsg (uint8_t type)
 
 void ReceiveCANMsg (CANbus::RxMsg &msg) // FIXME: rewrite function
 {
-  uint8_t tmp[30];
+  uint8_t tmp[40];
   uint32_t len = 0;
   
   if (msg.IDE)  // if Ext frame
@@ -222,7 +222,6 @@ void ReceiveCANMsg (CANbus::RxMsg &msg) // FIXME: rewrite function
 */
 int main(void)
 {
-  
   RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
   GPIOB->MODER &= ~GPIO_MODER_MODER10;
   GPIOB->MODER |= GPIO_MODER_MODER10_0; // output
@@ -239,13 +238,17 @@ int main(void)
       CANbus::Status st = CANbus::Status::Error;
       uint8_t tmp;
       rxfifo.pop(tmp);
+      bool skip_resp = false;
       
       switch (tmp)
       {
         case GetVersionSW: VCP_PutStr("vSTM32"); st = CANbus::Status::Ok; break;
         case GetVersionHW: VCP_PutStr("V0102"); st = CANbus::Status::Ok; break;
         case GetStatus:    VCP_PutStr("F00"); st = CANbus::Status::Ok; break;      // TODO: add response
-        case OpenCAN:         st = CANbus::open(CANbus::OpenMode::Normal); break;
+        case OpenCAN:
+          txfifo.clear();
+          st = CANbus::open(CANbus::OpenMode::Normal);
+          break;
         case OpenCANLoopback: st = CANbus::open(CANbus::OpenMode::LoopBack); break;
         case OpenCANListen:   st = CANbus::open(CANbus::OpenMode::ListenOnly); break;
         case CloseCAN:        st = CANbus::close(); break;       
@@ -261,11 +264,11 @@ int main(void)
           st = CANbus::bitrate(GetBitrateCustom());
           break;
         case SendStd: case SendStdRTR:
-          st = SebdCANMsg(tmp);
+          st = SendCANMsg(tmp);
           if (st==CANbus::Status::Ok) VCP_PutStr("z");
           break;		
         case SendExt: case SendExtRTR:
-          st = SebdCANMsg(tmp);
+          st = SendCANMsg(tmp);
           if (st==CANbus::Status::Ok) VCP_PutStr("Z");
           break;		
         case SetFilterCode:
@@ -276,18 +279,26 @@ int main(void)
           break;
         default:
           st = CANbus::Status::Ok;
+          skip_resp = true;
           break;
       }
-      VCP_PutStr ((st==CANbus::Status::Ok) ? "\r" : "\a");
+      
+      if (!skip_resp)
+      {
+        VCP_PutStr ((st==CANbus::Status::Ok) ? "\r" : "\a");
+        skip_resp = false;
+      }
     }
-  
-    while (!txfifo.empty())
+
+    while(1)
     {
       uint8_t tmp;
-      txfifo.pop(tmp);
-      VCP_DataTx(&tmp, 1);
+      if (txfifo.front(tmp) && (VCP_DataTx(&tmp, 1) == 1)) {
+        txfifo.pop(tmp); /* remove char from queue only if it successfully written to VCP */
+      } else {
+        break;
+      }
     }
-    
   }
 }
 

@@ -29,7 +29,7 @@ Status CANbus::init (void)
   GPIOB->AFR[1] |=  0x00000044;
 
   RCC->APB1ENR |= RCC_APB1ENR_CANEN;
-  CAN->MCR |= CAN_MCR_SLEEP | CAN_MCR_ABOM;
+  CAN->MCR = CAN_MCR_SLEEP | CAN_MCR_ABOM | CAN_MCR_TXFP;
 
   CAN->FMR |= CAN_FMR_FINIT; 
   CAN->FM1R = 0;                    // 0: Two 32-bit registers of filter bank x are in Identifier Mask mode.
@@ -38,7 +38,7 @@ Status CANbus::init (void)
   CAN->FA1R = CAN_FA1R_FACT0;       // 1: Filter is active
   CAN->sFilterRegister[0].FR1 = 0;  // ID
   CAN->sFilterRegister[0].FR2 = 0;  // MASK  
-  CAN->FMR &=~ CAN_FMR_FINIT;
+  CAN->FMR &= ~(uint32_t)CAN_FMR_FINIT;
 
   timled.init();
 
@@ -50,7 +50,7 @@ Status CANbus::filtermask (uint32_t msk)
 {
   CAN->FMR |= CAN_FMR_FINIT; 
   CAN->sFilterRegister[0].FR2 = ~msk; // MASK  
-  CAN->FMR &=~ CAN_FMR_FINIT;
+  CAN->FMR &= ~(uint32_t)CAN_FMR_FINIT;
   return Status::Ok;
 }
 
@@ -59,7 +59,7 @@ Status CANbus::filtercode (uint32_t code)
 {
   CAN->FMR |= CAN_FMR_FINIT; 
   CAN->sFilterRegister[0].FR1 = code; // ID  
-  CAN->FMR &=~ CAN_FMR_FINIT;
+  CAN->FMR &= ~(uint32_t)CAN_FMR_FINIT;
   return Status::Ok;
 }
 
@@ -93,6 +93,9 @@ Status CANbus::bitrate (uint32_t btr)
 
 Status CANbus::open (OpenMode mode)
 {
+  CAN->MCR |= CAN_MCR_RESET;
+  while(CAN->MCR & CAN_MCR_RESET);
+
   CAN->MCR |= CAN_MCR_INRQ;
   while (!(CAN->MSR & CAN_MSR_INAK));
 
@@ -108,7 +111,7 @@ Status CANbus::open (OpenMode mode)
   CAN->MCR &= ~(uint32_t)CAN_MCR_INRQ;
   while (CAN->MSR & CAN_MSR_INAK);
   
-  CAN->MCR &= ~CAN_MCR_SLEEP;
+  CAN->MCR &= ~(uint32_t)CAN_MCR_SLEEP;
 
   CAN->IER |= CAN_IER_FMPIE0;
   NVIC_SetPriority(CEC_CAN_IRQn, 1);
@@ -116,7 +119,7 @@ Status CANbus::open (OpenMode mode)
   
   isopen = true;
   timled.link(true);
-  return  Status::Ok;
+  return Status::Ok;
 }
 
 
@@ -124,11 +127,12 @@ Status CANbus::close (void)
 {
   // FIXME: check busy?
   CAN->MCR |= CAN_MCR_SLEEP;
+    
   NVIC_DisableIRQ(CEC_CAN_IRQn);
 
   isopen = false;
   timled.link(false);
-  return  Status::Ok;
+  return Status::Ok;
 }
 
 
@@ -148,20 +152,11 @@ bool CANbus::timestamp (void)
 Status CANbus::send (TxMsg &msg)
 {
   Status result = Status::Error;
-  uint32_t mb;
-  mb = (CAN->TSR & CAN_TSR_CODE) >> 24; // TODO: check it
   
-//  if (CAN->TSR & CAN_TSR_TME0)
-//    mb = 0;
-//  else if (CAN->TSR & CAN_TSR_TME1)
-//    mb = 1;
-//  else if (CAN->TSR & CAN_TSR_TME2)
-//    mb = 2;
-//  else
-//    mb = 3;
-
-  if (mb != 3)
+  if (CAN->TSR & (CAN_TSR_TME))
   {
+    uint32_t mb = (CAN->TSR & CAN_TSR_CODE) >> 24;
+
     CAN->sTxMailBox[mb].TDTR = msg.DLC;
     CAN->sTxMailBox[mb].TDLR = msg.Data32[0];
     CAN->sTxMailBox[mb].TDHR = msg.Data32[1];
@@ -183,7 +178,7 @@ Status CANbus::send (TxMsg &msg)
 Status CANbus::set_rx_cb(RxCallback cb)
 {
   Status result = Status::Error;
-  if (cb)
+  if (cb != nullptr)
   {
     rx_cb = cb;
     result = Status::Ok;
@@ -197,7 +192,7 @@ void CEC_CAN_IRQHandler (void)
   
   // TODO: add error handling
 
-  if (rx_cb && (CAN->RF0R & CAN_RF0R_FMP0))
+  if (CAN->RF0R & CAN_RF0R_FMP0)
   {
     RxMsg msg;
     msg.Time = timled.value();
@@ -210,9 +205,9 @@ void CEC_CAN_IRQHandler (void)
 
     CAN->RF0R |= CAN_RF0R_RFOM0;
     timled.rx_blink(5);
-    rx_cb(msg);
+    if (rx_cb != nullptr)
+    {
+      rx_cb(msg);
+    }
   }
 }
-
-
-

@@ -1,7 +1,10 @@
 <!DOCTYPE CrossStudio_Session_File>
 <session>
  <Bookmarks/>
- <Breakpoints groups="Breakpoints" active_group="Breakpoints"/>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints">
+  <BreakpointListItem trigger="" line="243" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" group="Breakpoints" type="Breakpoint" state="2" filename="src/main.cpp" useHWbreakpoint="false"/>
+  <BreakpointListItem trigger="" line="116" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" group="Breakpoints" type="Breakpoint" state="2" filename="src/usbd_cdc_vcp.c" useHWbreakpoint="false"/>
+ </Breakpoints>
  <ExecutionProfileWindow/>
  <FrameBufferWindow>
   <FrameBufferWindow bufferHeight="-1" addressSpace="" addressText="" bufferWidth="-1"/>
@@ -24,10 +27,10 @@
   <ProjectSessionItem path="USB-CAN;USB-CAN;CMSIS Files"/>
   <ProjectSessionItem path="USB-CAN;USB-CAN;Source Files"/>
   <ProjectSessionItem path="USB-CAN;USB-CAN;System Files"/>
-  <SourceCodeControlLogin password="68D7C45E04C1CD79" user="vladisenko"/>
+  <SourceCodeControlLogin password="F9BB6682F5D56822" user="vladisenko &lt;e.vladisenko@gmail.com>"/>
  </Project>
  <Register1>
-  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp;CAN/CAN_MCR;CAN/CAN_MSR;CAN/CAN_TSR;CAN/CAN_RF0R;CAN/CAN_RF1R;CAN/CAN_IER;CAN/CAN_ESR;CAN/CAN_BTR;CAN/CAN_TI0R;CAN/CAN_TDT0R;CAN/CAN_TDL0R;CAN/CAN_TDH0R;CAN/CAN_TI1R;CAN/CAN_TDT1R;CAN/CAN_TDL1R;CAN/CAN_TDH1R;CAN/CAN_TI2R;CAN/CAN_TDT2R;CAN/CAN_TDL2R;CAN/CAN_TDH2R;CAN/CAN_RI0R;CAN/CAN_RDT0R;CAN/CAN_RDL0R;CAN/CAN_RDH0R;CAN/CAN_RI1R;CAN/CAN_RDT1R;CAN/CAN_RDL1R;CAN/CAN_RDH1R;CAN/CAN_FMR;CAN/CAN_FM1R;CAN/CAN_FS1R;CAN/CAN_FFA1R;CAN/CAN_FA1R;CAN/F0R1;CAN/F0R2;CAN/F1R1;CAN/F1R2;CAN/F2R1;CAN/F2R2;CAN/F3R1;CAN/F3R2;CAN/F4R1;CAN/F4R2;CAN/F5R1;CAN/F5R2;CAN/F6R1;CAN/F6R2;CAN/F7R1;CAN/F7R2;CAN/F8R1;CAN/F8R2;CAN/F9R1;CAN/F9R2;CAN/F10R1;CAN/F10R2;CAN/F11R1;CAN/F11R2;CAN/F12R1;CAN/F12R2;CAN/F13R1;CAN/F13R2;CAN/F14R1;CAN/F14R2;CAN/F15R1;CAN/F15R2;CAN/F16R1;CAN/F16R2;CAN/F17R1;CAN/F17R2;CAN/F18R1;CAN/F18R2;CAN/F19R1;CAN/F19R2;CAN/F20R1;CAN/F20R2;CAN/F21R1;CAN/F21R2;CAN/F22R1;CAN/F22R2;CAN/F23R1;CAN/F23R2;CAN/F24R1;CAN/F24R2;CAN/F25R1;CAN/F25R2;CAN/F26R1;CAN/F26R2;CAN/F27R1;CAN/F27R2" binaryNodes="" asciiNodes="" openNodes="CAN" name="USB-CAN" decimalNodes="" octalNodes="" unsignedNodes=""/>
+  <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp;CAN/CAN_MCR;CAN/CAN_MSR;CAN/CAN_TSR;CAN/CAN_RF0R;CAN/CAN_RF1R;CAN/CAN_IER;CAN/CAN_ESR;CAN/CAN_BTR;CAN/CAN_TI0R;CAN/CAN_TDT0R;CAN/CAN_TDL0R;CAN/CAN_TDH0R;CAN/CAN_TI1R;CAN/CAN_TDT1R;CAN/CAN_TDL1R;CAN/CAN_TDH1R;CAN/CAN_TI2R;CAN/CAN_TDT2R;CAN/CAN_TDL2R;CAN/CAN_TDH2R;CAN/CAN_RI0R;CAN/CAN_RDT0R;CAN/CAN_RDL0R;CAN/CAN_RDH0R;CAN/CAN_RI1R;CAN/CAN_RDT1R;CAN/CAN_RDL1R;CAN/CAN_RDH1R;CAN/CAN_FMR;CAN/CAN_FM1R;CAN/CAN_FS1R;CAN/CAN_FFA1R;CAN/CAN_FA1R;CAN/F0R1;CAN/F0R2;CAN/F1R1;CAN/F1R2;CAN/F2R1;CAN/F2R2;CAN/F3R1;CAN/F3R2;CAN/F4R1;CAN/F4R2;CAN/F5R1;CAN/F5R2;CAN/F6R1;CAN/F6R2;CAN/F7R1;CAN/F7R2;CAN/F8R1;CAN/F8R2;CAN/F9R1;CAN/F9R2;CAN/F10R1;CAN/F10R2;CAN/F11R1;CAN/F11R2;CAN/F12R1;CAN/F12R2;CAN/F13R1;CAN/F13R2;CAN/F14R1;CAN/F14R2;CAN/F15R1;CAN/F15R2;CAN/F16R1;CAN/F16R2;CAN/F17R1;CAN/F17R2;CAN/F18R1;CAN/F18R2;CAN/F19R1;CAN/F19R2;CAN/F20R1;CAN/F20R2;CAN/F21R1;CAN/F21R2;CAN/F22R1;CAN/F22R2;CAN/F23R1;CAN/F23R2;CAN/F24R1;CAN/F24R2;CAN/F25R1;CAN/F25R2;CAN/F26R1;CAN/F26R2;CAN/F27R1;CAN/F27R2" binaryNodes="" asciiNodes="" openNodes="CAN;CAN/CAN_TSR" name="USB-CAN" decimalNodes="" octalNodes="" unsignedNodes=""/>
  </Register1>
  <Register2>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="USB-CAN" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -58,13 +61,15 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile x="0" y="32" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.cpp" debugPath="src/can.cpp" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.hpp" debugPath="src/can.hpp" selected="0" top="53" codecName="Default"/>
-  <SessionOpenFile x="0" y="281" useTextEdit="1" useBinaryEdit="0" left="0" path="src/main.cpp" debugPath="src/main.cpp" selected="1" top="242" codecName="Default"/>
-  <SessionOpenFile x="0" y="42" useTextEdit="1" useBinaryEdit="0" left="0" path="src/gpio.cpp" debugPath="src/gpio.cpp" selected="0" top="6" codecName="Default"/>
-  <SessionOpenFile x="0" y="41" useTextEdit="1" useBinaryEdit="0" left="0" path="src/gpio.hpp" debugPath="src/gpio.hpp" selected="0" top="27" codecName="Default"/>
-  <SessionOpenFile x="0" y="32" useTextEdit="1" useBinaryEdit="0" left="0" path="src/fifo.hpp" debugPath="src/fifo.hpp" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile x="0" y="1306" useTextEdit="1" useBinaryEdit="0" left="0" path="STM32F0xx/CMSIS/Device/Include/stm32f0xx.h" debugPath="STM32F0xx/CMSIS/Device/Include/stm32f0xx.h" selected="0" top="1282" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="224" useTextEdit="1" useBinaryEdit="0" left="0" path="src/main.cpp" debugPath="src/main.cpp" selected="0" top="200" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="72" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.hpp" debugPath="src/can.hpp" selected="0" top="41" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="51" useTextEdit="1" useBinaryEdit="0" left="0" path="src/timer_led.cpp" debugPath="src/timer_led.cpp" selected="0" top="28" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="8" useTextEdit="1" useBinaryEdit="0" left="0" path="src/Timer.hpp" debugPath="src/Timer.hpp" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="41" useTextEdit="1" useBinaryEdit="0" left="0" path="src/gpio.hpp" debugPath="src/gpio.hpp" selected="0" top="3" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="132" useTextEdit="1" useBinaryEdit="0" left="0" path="src/usbd_cdc_vcp.c" debugPath="src/usbd_cdc_vcp.c" selected="0" top="107" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="643" useTextEdit="1" useBinaryEdit="0" left="0" path="STM32_USB_Device_Library/Core/src/usbd_req.c" debugPath="STM32_USB_Device_Library/Core/src/usbd_req.c" selected="0" top="543" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="114" useTextEdit="1" useBinaryEdit="0" left="0" path="STM32_USB_Device_Library/Core/src/usbd_core.c" debugPath="STM32_USB_Device_Library/Core/src/usbd_core.c" selected="0" top="85" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="13" useTextEdit="1" useBinaryEdit="0" left="0" path="src/can.cpp" debugPath="src/can.cpp" selected="1" top="0" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="USB-CAN" fileDialogDefaultFilter="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.hxx" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="D:/SW/SEGGER-Embedded-Studio-Projects/USB-CAN/src" debugSearchPath="" autoConnectCapabilities="1132"/>
 </session>
