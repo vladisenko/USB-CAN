@@ -54,3 +54,4 @@ Temporary Items
 *.jlink
 *.elf
 *.map
+*.emSession
