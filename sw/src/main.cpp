@@ -149,7 +149,7 @@ CANbus::Status SendCANMsg (uint8_t type)
     else if (i < 9)                       // get DLC
     {
       msg.DLC = char_to_hex(tmp);
-      if (msg.IDE) break;                 // if this is remote frame no need send data
+      if (msg.RTR) break;                 // if this is remote frame no need send data
     }
     else                                  // get DATA
     {
