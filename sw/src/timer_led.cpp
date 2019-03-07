@@ -29,26 +29,27 @@ void TimerLed::init (void)
 
 uint32_t TimerLed::calc_ccr(uint32_t tick)
 {
-  if (tick > top()) tick = top();
-  uint32_t val = value();
-  uint32_t tmp = top() - val;
-  return (tick > tmp) ? (tick - tmp) : (val + tick);
+  uint32_t top_ = top();
+  uint32_t tmp = (tick > top_) ? (value() + top_) : (value() + tick);
+  return (tmp > top_) ? (tmp - top_) : (tmp);
 }
 
 
 void TimerLed::rx_blink (uint32_t tick)
 {
-  instance()->CCR1 = calc_ccr(tick);
-  instance()->DIER |= TIM_DIER_CC1IE;   // CC1 interrupt enabled
   led_rx.hi();
+  instance()->CCR1 = calc_ccr(tick);
+  instance()->SR   = ~TIM_SR_CC1IF;
+  instance()->DIER |= TIM_DIER_CC1IE;   // CC1 interrupt enabled
 }
 
 
 void TimerLed::tx_blink (uint32_t tick)
 {
-  instance()->CCR2 = calc_ccr(tick);
-  instance()->DIER |= TIM_DIER_CC2IE;   // CC2 interrupt enabled
   led_tx.hi();
+  instance()->CCR2 = calc_ccr(tick);
+  instance()->SR   = ~TIM_SR_CC2IF;
+  instance()->DIER |= TIM_DIER_CC2IE;   // CC2 interrupt enabled
 }
 
 
@@ -67,14 +68,14 @@ void TIM15_IRQHandler (void)
   
   if (sr & TIM_SR_CC1IF)
   {
-    TIM15->SR &= ~TIM_SR_CC1IF;
+    TIM15->SR    = ~TIM_SR_CC1IF;
     TIM15->DIER &= ~TIM_DIER_CC1IE;
     led_rx.lo();
   }
 
   if (sr & TIM_SR_CC2IF)
   {
-    TIM15->SR &= ~TIM_SR_CC2IF;
+    TIM15->SR    = ~TIM_SR_CC2IF;
     TIM15->DIER &= ~TIM_DIER_CC2IE;
     led_tx.lo();
   }
