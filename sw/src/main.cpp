@@ -32,7 +32,11 @@ enum {
   SendStd         = 't',
   SendStdRTR      = 'r',
   SendExt         = 'T',
-  SendExtRTR      = 'R'
+  SendExtRTR      = 'R',
+  SetErrorReport  = 'E',
+  DisableAutoReTX = 'D',
+  Help            = 'h',
+  HelpAlt         = '?',
 };
 
 
@@ -40,6 +44,29 @@ USB_CORE_HANDLE  USB_Device_dev;
 
 FIFO<uint8_t, 4096> rxfifo; 
 FIFO<uint8_t, 4096> txfifo;
+
+static bool error_en = false;
+
+static char *help_str = "USB-CAN adapter based on STM32F072. Compiled: " __DATE__ " " __TIME__ "\n"
+                        "Command list:\n"
+                        "Sn[CR]    - Setup with standard CAN bit-rates where n is 0-8\n"
+                        "sxxxx[CR] - Setup custom CAN bit-rates\n"
+                        "O[CR]     - Open the CAN channel in normal mode\n"
+                        "L[CR]     - Open the CAN channel in listen only mode\n"
+                        "l[CR]     - Open the CAN channel in loopback mode\n"
+                        "C[CR]     - Close the CAN channel\n"
+                        "v[CR]     - Get SW Version number\n"
+                        "V[CR]     - Get HW Version number\n"
+                        "Zn[CR]    - Sets Time Stamp ON/OFF for received frames only\n"
+                        "En[CR]    - Sets Error Reporting ON/OFF\n"
+                        "Dn[CR]    - Disable Auto Retransmitting\n"
+                        "tiiildd...[CR]      - Transmit a standard (11bit) CAN frame\n"
+                        "Tiiiiiiiildd...[CR] - Transmit an extended (29bit) CAN frame\n"
+                        "riiil[CR]           - Transmit an standard RTR (11bit) CAN frame\n"
+                        "Riiiiiiiil[CR]      - Transmit an extended RTR (29bit) CAN frame\n"
+                        "Mxxxxxxxx[CR]       - Sets Acceptance Code Register\n"
+                        "mxxxxxxxx[CR]       - Sets Acceptance Mask Register\n";
+
 
 
 uint16_t VCP_callback(uint8_t* Buf, uint32_t Len)
@@ -213,6 +240,35 @@ void ReceiveCANMsg (CANbus::RxMsg &msg) // FIXME: rewrite function
 }
 
 
+void CanErrorHandler(uint8_t err_code, uint32_t time)
+{
+  if (error_en)
+  {
+    uint8_t tmp[20];
+    uint32_t len = 0;
+
+    tmp[len++] = 'E';
+    tmp[len++] = hex_to_char(err_code >> 4);
+    tmp[len++] = hex_to_char(err_code >> 0);
+
+    if (CANbus::timestamp())
+    {
+      tmp[len++] = hex_to_char(time >> 12);
+      tmp[len++] = hex_to_char(time >> 8);
+      tmp[len++] = hex_to_char(time >> 4);
+      tmp[len++] = hex_to_char(time >> 0);
+    }
+
+    tmp[len++] = '\r';
+
+    for (uint8_t i = 0; i < len; i++)
+    {
+      txfifo.push(tmp[i]);
+    }
+  }
+}
+
+
 /*********************************************************************
 *
 *       main()
@@ -228,6 +284,7 @@ int main(void)
 
   CANbus::init();
   CANbus::set_rx_cb(ReceiveCANMsg);
+  CANbus::set_err_cb(CanErrorHandler);
 
   USBD_Init(&USB_Device_dev, &USR_desc, &USBD_CDC_cb, &USR_cb);
   
@@ -243,7 +300,7 @@ int main(void)
       switch (tmp)
       {
         case GetVersionSW: VCP_PutStr("vSTM32"); st = CANbus::Status::Ok; break;
-        case GetVersionHW: VCP_PutStr("V0102"); st = CANbus::Status::Ok; break;
+        case GetVersionHW: VCP_PutStr("V0112"); st = CANbus::Status::Ok; break;
         case GetStatus:    VCP_PutStr("F00"); st = CANbus::Status::Ok; break;      // TODO: add response
         case OpenCAN:
           txfifo.clear();
@@ -255,6 +312,15 @@ int main(void)
         case SetTimestamping: 
           while (false == rxfifo.pop(tmp)){};
           st = CANbus::timestamp((tmp=='0') ? false : true);
+          break;
+        case SetErrorReport:
+          while (false == rxfifo.pop(tmp)){};
+          error_en = ((tmp=='0') ? false : true);
+          st = CANbus::Status::Ok;
+          break;
+        case DisableAutoReTX:
+          while (false == rxfifo.pop(tmp)){};
+          st = CANbus::disableAutoRetransm((tmp=='0') ? false : true);
           break;
         case SetBitrate:
           while (false == rxfifo.pop(tmp)){};
@@ -277,6 +343,10 @@ int main(void)
         case SetFilterMask:
           st = CANbus::filtermask(get_word());
           break;
+
+        case Help:
+        case HelpAlt:
+          VCP_PutStr(help_str);
         default:
           st = CANbus::Status::Ok;
           skip_resp = true;

@@ -82,7 +82,10 @@
       </file>
     </folder>
     <configuration Name="Debug" debug_target_connection="J-Link" />
-    <configuration Name="Release" debug_target_connection="J-Link" />
+    <configuration
+      Name="Release"
+      debug_target_connection="J-Link"
+      gcc_optimization_level="Level 2 for speed" />
   </project>
   <configuration
     Name="Debug"

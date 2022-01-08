@@ -15,7 +15,9 @@ using CANbus::TxMsg;
 
 static TimerLed timled;
 static bool timestamping = false;
+static bool disable_auto_retx = false;
 static CANbus::RxCallback rx_cb = nullptr;
+static CANbus::ErrCallback err_cb = nullptr;
 static bool isopen = false;
 static uint32_t btr_reg = static_cast<uint32_t>(Bitrate::br1Mbit);
 
@@ -93,12 +95,26 @@ Status CANbus::bitrate (uint32_t btr)
 
 Status CANbus::open (OpenMode mode)
 {
+  /* Force a master reset of the bxCAN -> Sleep mode activated after reset */
   CAN->MCR |= CAN_MCR_RESET;
   while(CAN->MCR & CAN_MCR_RESET);
 
+  /* Request the CAN hardware to enter initialization mode */
   CAN->MCR |= CAN_MCR_INRQ;
   while (!(CAN->MSR & CAN_MSR_INAK));
 
+  /* Initialize CAN */
+  CAN->MCR |= CAN_MCR_ABOM | CAN_MCR_TXFP;
+  if (disable_auto_retx)
+  {
+    CAN->MCR |= CAN_MCR_NART;
+  }
+  else
+  {
+    CAN->MCR &= ~CAN_MCR_NART;
+  }
+
+  /* Set CAN mode */
   btr_reg &= ~(CAN_BTR_LBKM | CAN_BTR_SILM);
   switch (mode)
   {
@@ -108,12 +124,21 @@ Status CANbus::open (OpenMode mode)
   }
   CAN->BTR = btr_reg;
 
+  /* Switch the hardware into normal mode */
   CAN->MCR &= ~(uint32_t)CAN_MCR_INRQ;
   while (CAN->MSR & CAN_MSR_INAK);
-  
+
+  /* Clear Error Interrupt flag */
+  CAN->MSR = CAN_MSR_ERRI;
+
+  /* Enable Interrupt */
+  CAN->IER |= CAN_IER_FMPIE0 |  /* Interrupt generated when state of FMP[1:0] bits are not 00b (FIFO0 is not empty) */
+              CAN_IER_LECIE  |  /* ERRI bit will be set when the error code in LEC[2:0] is set by hardware on error detection */
+              CAN_IER_ERRIE;    /* An interrupt will be generation when an error condition is pending in the CAN_ESR */
+
+  /* exit Sleep mode */
   CAN->MCR &= ~(uint32_t)CAN_MCR_SLEEP;
 
-  CAN->IER |= CAN_IER_FMPIE0;
   NVIC_SetPriority(CEC_CAN_IRQn, 1);
   NVIC_EnableIRQ(CEC_CAN_IRQn);
   
@@ -125,9 +150,13 @@ Status CANbus::open (OpenMode mode)
 
 Status CANbus::close (void)
 {
-  // FIXME: check busy?
+  /* Request Sleep mode */
   CAN->MCR |= CAN_MCR_SLEEP;
-    
+  while (!(CAN->MSR & CAN_MSR_SLAK));
+
+  /* Abort request for all mailbox */
+  CAN->TSR = CAN_TSR_ABRQ0 | CAN_TSR_ABRQ1 | CAN_TSR_ABRQ2;
+
   NVIC_DisableIRQ(CEC_CAN_IRQn);
 
   isopen = false;
@@ -149,10 +178,17 @@ bool CANbus::timestamp (void)
 }
 
 
+Status CANbus::disableAutoRetransm(bool state)
+{
+  disable_auto_retx = state;
+  return Status::Ok;
+}
+
+
 Status CANbus::send (TxMsg &msg)
 {
   Status result = Status::Error;
-  
+
   if (CAN->TSR & (CAN_TSR_TME))
   {
     uint32_t mb = (CAN->TSR & CAN_TSR_CODE) >> 24;
@@ -166,7 +202,7 @@ Status CANbus::send (TxMsg &msg)
     tmp |= msg.IDE ? CAN_TI0R_IDE : 0;
     tmp |= msg.RTR ? CAN_TI0R_RTR : 0;
     CAN->sTxMailBox[mb].TIR = tmp | CAN_TI0R_TXRQ;
-    
+
     timled.tx_blink(5);
     result = Status::Ok;
   }
@@ -187,11 +223,36 @@ Status CANbus::set_rx_cb(RxCallback cb)
 }
 
 
+Status CANbus::set_err_cb(ErrCallback cb)
+{
+  Status result = Status::Error;
+  if (cb != nullptr)
+  {
+    err_cb = cb;
+    result = Status::Ok;
+  }
+  return result;
+}
+
+
 void CEC_CAN_IRQHandler (void)
 {
-  
-  // TODO: add error handling
+  /* Check error */
+  if (CAN->MSR & CAN_MSR_ERRI)
+  {
+    /* Clear ERRI flag */
+    CAN->MSR = CAN_MSR_ERRI;
 
+    /* Get error code */
+    uint8_t lec = (CAN->ESR & CAN_ESR_LEC) >> 4;
+
+    if (err_cb != nullptr)
+    {
+      err_cb(lec, timled.value());
+    }
+  }
+
+  /* Check new message */
   if (CAN->RF0R & CAN_RF0R_FMP0)
   {
     RxMsg msg;

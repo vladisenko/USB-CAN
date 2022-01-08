@@ -56,6 +56,7 @@ namespace CANbus
   } RxMsg;
 
   typedef void (*RxCallback) (CANbus::RxMsg &msg);
+  typedef void (*ErrCallback) (uint8_t code, uint32_t time);
   
   Status init (void);
   Status bitrate (Bitrate br);
@@ -64,9 +65,11 @@ namespace CANbus
   Status close (void);
   Status send (TxMsg &msg);
   Status set_rx_cb(RxCallback cb);
+  Status set_err_cb(ErrCallback cb);
   Status filtermask (uint32_t msk);
   Status filtercode (uint32_t code);
   Status timestamp (bool state);
   bool timestamp (void); 
+  Status disableAutoRetransm(bool state);
 };
 #endif // _CAN_HPP_
