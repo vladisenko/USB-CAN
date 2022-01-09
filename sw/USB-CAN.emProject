@@ -73,6 +73,9 @@
       </file>
       <file file_name="src/Timer.cpp" />
       <file file_name="src/timer_led.cpp" />
+      <file file_name="src/eeprom.c" />
+      <file file_name="src/stm32f0xx_flash.c" />
+      <file file_name="src/xprintf.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="thumb_crt0.s" />
